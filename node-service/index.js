@@ -1,7 +1,12 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const port = 3000
 const axios = require('axios').default
+
+
+app.use(cors())
+
 
 // https://docs.particle.io/reference/developer-tools/cli/#particle-token-create
 // particle token create --never-expires
@@ -52,14 +57,28 @@ app.get('/status', async (req, res) => {
 
 
 
+let rainbowState = 0
+
 ///v1/devices/:deviceId/
 app.get('/rainbow/:state', (req, res) => {
+
+	if (req.params.state == 'toggle') {
+		if (rainbowState == 0) {
+			rainbowState = 1
+		} else {
+			rainbowState = 0
+		}
+	} else if (req.params.state == 'off' || req.params.state == 0) {
+		rainbowState = 0
+	} else if (req.params.state == 'on' || req.params.state == 1) {
+		rainbowState = 1
+	}
 
 	axios({
 			method: 'put',
 			url: `${API_BASE}/devices/${DEVICE_ID}/`,
 			data: {
-				signal: req.params.state,
+				signal: rainbowState,
 			},
 			headers: {
 				'Authorization': 'Bearer ' + API_TOKEN
@@ -83,19 +102,152 @@ app.get('/rainbow/:state', (req, res) => {
 
 ///v1/devices/:deviceId/:functionName
 //https://docs.particle.io/reference/device-cloud/api/#call-a-function
-app.get('/mode/:id', (req, res) => {
+app.get('/program/:id', (req, res) => {
 
-	axios({
-			method: 'put',
-			url: `${API_BASE}/devices/${DEVICE_ID}/onboardLED/`,
-			data: {
-				functionName: 'onboardLED',
-				arg: 'toggle'
-			},
-			headers: {
-				'Authorization': 'Bearer ' + API_TOKEN
-			}
+	let ajax = {
+		method: 'POST',
+		url: `${API_BASE}/devices/${DEVICE_ID}/program/`,
+		data: {
+			arg: req.params.id
+		},
+		headers: {
+			'Authorization': 'Bearer ' + API_TOKEN
+		}
+	}
+
+	console.log('post', ajax)
+
+	axios(ajax)
+		.then((response) => {
+			// handle success
+			console.log('SUCCESS')
+			res.send(response.data)
 		})
+		.catch((error) => {
+			// handle error
+			console.log('ERROR', error)
+			res.send(error);
+		})
+		.finally(() => {
+			// always executed
+			console.log('FINALLY')
+		});
+})
+
+
+
+app.get('/r/:num', (req, res) => {
+
+	let ajax = {
+		method: 'POST',
+		url: `${API_BASE}/devices/${DEVICE_ID}/r/`,
+		data: {
+			arg: req.params.num
+		},
+		headers: {
+			'Authorization': 'Bearer ' + API_TOKEN
+		}
+	}
+
+	console.log('post', ajax)
+
+	axios(ajax)
+		.then((response) => {
+			// handle success
+			console.log('SUCCESS')
+			res.send(response.data)
+		})
+		.catch((error) => {
+			// handle error
+			console.log('ERROR', error)
+			res.send(error);
+		})
+		.finally(() => {
+			// always executed
+			console.log('FINALLY')
+		});
+})
+
+app.get('/g/:num', (req, res) => {
+
+	let ajax = {
+		method: 'POST',
+		url: `${API_BASE}/devices/${DEVICE_ID}/g/`,
+		data: {
+			arg: req.params.num
+		},
+		headers: {
+			'Authorization': 'Bearer ' + API_TOKEN
+		}
+	}
+
+	console.log('post', ajax)
+
+	axios(ajax)
+		.then((response) => {
+			// handle success
+			console.log('SUCCESS')
+			res.send(response.data)
+		})
+		.catch((error) => {
+			// handle error
+			console.log('ERROR', error)
+			res.send(error);
+		})
+		.finally(() => {
+			// always executed
+			console.log('FINALLY')
+		});
+})
+app.get('/b/:num', (req, res) => {
+
+	let ajax = {
+		method: 'POST',
+		url: `${API_BASE}/devices/${DEVICE_ID}/b/`,
+		data: {
+			arg: req.params.num
+		},
+		headers: {
+			'Authorization': 'Bearer ' + API_TOKEN
+		}
+	}
+
+	console.log('post', ajax)
+
+	axios(ajax)
+		.then((response) => {
+			// handle success
+			console.log('SUCCESS')
+			res.send(response.data)
+		})
+		.catch((error) => {
+			// handle error
+			console.log('ERROR', error)
+			res.send(error);
+		})
+		.finally(() => {
+			// always executed
+			console.log('FINALLY')
+		});
+})
+
+
+app.get('/brightness/:b', (req, res) => {
+
+	let ajax = {
+		method: 'POST',
+		url: `${API_BASE}/devices/${DEVICE_ID}/brightness/`,
+		data: {
+			arg: req.params.b
+		},
+		headers: {
+			'Authorization': 'Bearer ' + API_TOKEN
+		}
+	}
+
+	console.log('post', ajax)
+
+	axios(ajax)
 		.then((response) => {
 			// handle success
 			console.log('SUCCESS')

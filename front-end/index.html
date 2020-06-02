@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title> ¯\_(ツ)_/¯ </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="dist/css/main.css">
+
+
+</head>
+
+<body>
+
+	Programs<br>
+	<button class="program" data-program-name="off">off</button>
+	<button class="program" data-program-name="default">default</button>
+	<button class="program" data-program-name="rgb">rgb (see below)</button>
+	<button class="program" data-program-name="weather">weather</button>
+	<button class="program" data-program-name="lightning">lightning</button>
+	<button class="program" data-program-name="rainbow">rainbow</button>
+	<br><br><br>
+	RGB values <br>
+	<input type="number" min="0" max="255" step="10" class="color-r" value="150">
+	<input type="number" min="0" max="255" step="10" class="color-g" value="150">
+	<input type="number" min="0" max="255" step="10" class="color-b" value="150">
+	<button class="color-save">Send</button>
+	<br><br><br>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+	<script src="dist/js/main.js"></script>
+
+</body>
+
+</html>
