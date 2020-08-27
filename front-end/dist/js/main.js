@@ -2,6 +2,11 @@
 
 // const API_BASE = 'http://localhost:3000/'
 var API_BASE = 'http://circuslabs.net:1437/';
+
+if (location.protocol === 'https:') {
+  location.replace("http:".concat(location.href.substring(location.protocol.length)));
+}
+
 var statusP = document.querySelector('p.status');
 
 var fetchStatus = function fetchStatus() {
