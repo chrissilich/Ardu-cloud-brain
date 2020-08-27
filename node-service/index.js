@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const port = 3000
+const port = 1437
 const axios = require('axios').default
 
 
@@ -48,9 +48,10 @@ app.get('/status', async (req, res) => {
 			console.log('ERROR', error)
 			res.send(error);
 		})
-		.finally(() => {
+		.then(() => {
 			// always executed
 			console.log('FINALLY')
+			res.end('got it')
 		});
 
 })
@@ -94,9 +95,10 @@ app.get('/rainbow/:state', (req, res) => {
 			console.log('ERROR', error)
 			res.send(error);
 		})
-		.finally(() => {
+		.then(() => {
 			// always executed
 			console.log('FINALLY')
+			res.end('got it')
 		});
 })
 
@@ -128,9 +130,10 @@ app.get('/program/:id', (req, res) => {
 			console.log('ERROR', error)
 			res.send(error);
 		})
-		.finally(() => {
+		.then(() => {
 			// always executed
 			console.log('FINALLY')
+			res.end('got it')
 		});
 })
 
@@ -162,9 +165,10 @@ app.get('/r/:num', (req, res) => {
 			console.log('ERROR', error)
 			res.send(error);
 		})
-		.finally(() => {
+		.then(() => {
 			// always executed
 			console.log('FINALLY')
+			res.end('got it')
 		});
 })
 
@@ -194,9 +198,10 @@ app.get('/g/:num', (req, res) => {
 			console.log('ERROR', error)
 			res.send(error);
 		})
-		.finally(() => {
+		.then(() => {
 			// always executed
 			console.log('FINALLY')
+			res.end('got it')
 		});
 })
 app.get('/b/:num', (req, res) => {
@@ -225,9 +230,10 @@ app.get('/b/:num', (req, res) => {
 			console.log('ERROR', error)
 			res.send(error);
 		})
-		.finally(() => {
+		.then(() => {
 			// always executed
 			console.log('FINALLY')
+			res.end('got it')
 		});
 })
 
@@ -258,9 +264,10 @@ app.get('/brightness/:b', (req, res) => {
 			console.log('ERROR', error)
 			res.send(error);
 		})
-		.finally(() => {
+		.then(() => {
 			// always executed
 			console.log('FINALLY')
+			res.end('got it')
 		});
 })
 

@@ -8,6 +8,9 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A=="
+		crossorigin="anonymous" />
 	<link rel="stylesheet" href="dist/css/main.css">
 
 
@@ -15,21 +18,70 @@
 
 <body>
 
-	Programs<br>
-	<button class="program" data-program-name="off">off</button>
-	<button class="program" data-program-name="default">default</button>
-	<button class="program" data-program-name="rgb">rgb (see below)</button>
-	<button class="program" data-program-name="weather">weather</button>
-	<button class="program" data-program-name="lightning">lightning</button>
-	<button class="program" data-program-name="rainbow">rainbow</button>
-	<br><br><br>
-	RGB values <br>
-	<input type="number" min="0" max="255" step="10" class="color-r" value="150">
-	<input type="number" min="0" max="255" step="10" class="color-g" value="150">
-	<input type="number" min="0" max="255" step="10" class="color-b" value="150">
-	<button class="color-save">Send</button>
-	<br><br><br>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+	<img class="logo" src="dist/img/logo.png">
+
+	<h3>The Cloud</h3>
+	<p>It's a brainstorm. Get it?</p>
+
+
+	<h4>
+		Programs
+		<div class="progress-program progress red lighten-1 ">
+			<div class="indeterminate red darken-2 "></div>
+		</div>
+	</h4>
+	<p>Pick a program</p>
+	<a class="btn red lighten-3 program" data-program-name="off">OFF</a>
+	<!-- <a class="btn red lighten-1 program" data-program-name="default">default</a> -->
+	<a class="btn red lighten-1 program" data-program-name="rgb">Custom Color</a>
+	<!-- <a class="btn red lighten-1 program" data-program-name="weather">weather</a> -->
+	<a class="btn red lighten-1 program" data-program-name="lightning">Lightning</a>
+	<a class="btn red lighten-1 program" data-program-name="rainbow">Rainbow</a>
+	<a class="btn red lighten-1 program" data-program-name="chase">Chase</a>
+	<br>
+	<br>
+
+
+	<h4>
+		Custom Color
+		<div class="progress-color progress red lighten-1 ">
+			<div class="indeterminate red darken-2 "></div>
+		</div>
+	</h4>
+
+	<p>Enter RGB values, from 0 to 255, press send, then press the Custom Color program button above</p>
+	<label>Red: <input type="number" min="0" max="255" step="10" class="color-r" value="150"></label>
+	<label>Green: <input type="number" min="0" max="255" step="10" class="color-g" value="150"></label>
+	<label>Blue: <input type="number" min="0" max="255" step="10" class="color-b" value="150"></label>
+	<a class="btn red lighten-1 color-save">Send</a>
+	<br>
+	<br>
+
+
+	<h4>
+		Brightness
+		<div class="progress-brightness progress red lighten-1 ">
+			<div class="indeterminate red darken-2 "></div>
+		</div>
+	</h4>
+	<p>If you want to adjust the overall brightness, do it here, from 0 to 255.</p>
+
+	<label>Brightness:<input type="number" min="0" max="255" step="10" class="brightness" value="150"></label>
+	<a class="btn red lighten-1 brightness-save">Send</a>
+
+
+
+	<h4>
+		Status
+	</h4>
+	<p class="status">
+		Fetching status...
+	</p>
+	<br>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+		integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
 	<script src="dist/js/main.js"></script>
 
 </body>
